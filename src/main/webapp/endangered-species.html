@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>濒危物种图鉴 - 野生动物保护网</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .species-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .species-section:last-child {
+            border-bottom: none;
+        }
+        .species-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .species-info {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .species-title {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #2ecc71;
+        }
+        .species-description {
+            color: #6c757d;
+            line-height: 1.8;
+        }
+        .species-stats {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #e8f5e9;
+            border-radius: 10px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .stat-item i {
+            color: #2ecc71;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html"><i class="fas fa-leaf me-2"></i>野生动物保护网</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html"><i class="fas fa-home me-1"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-paw me-1"></i> 物种保护</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-hands-helping me-1"></i> 志愿服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-book-reader me-1"></i> 科普教育</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <h1 class="text-center mb-5">濒危物种图鉴</h1>
+
+        <!-- 犀牛 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3628/image/p1300x1300/Rhinocerous0002_reduced.webp" alt="犀牛" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">犀牛</h2>
+                        <p class="species-description">
+                            犀牛是地球上最古老的哺乳动物之一，目前全球仅存约2.7万只。由于非法盗猎和栖息地丧失，犀牛种群数量持续下降。犀牛角在传统医药中的使用需求，导致盗猎活动猖獗。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 远东豹 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3803/image/p1300x1300/leopard_2.webp" alt="远东豹" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">远东豹</h2>
+                        <p class="species-description">
+                            远东豹是世界上最稀有的豹亚种之一，主要分布在俄罗斯远东地区和中国东北部。由于栖息地破碎化和人类活动的影响，其种群数量急剧下降。目前野外数量不足100只。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 猩猩 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3848/image/p1300x1300/AdobeStock_384667533_431571.webp" alt="猩猩" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">猩猩</h2>
+                        <p class="species-description">
+                            猩猩是人类的近亲，具有高度的智慧和社会性。由于森林砍伐、疾病传播和非法捕猎，猩猩的生存受到严重威胁。目前野外数量持续下降。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 大猩猩 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3980/image/p1300x1300/Mignon-Gorilla5_reduced.webp" alt="大猩猩" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">大猩猩</h2>
+                        <p class="species-description">
+                            大猩猩是人类的近亲，具有高度的智慧和社会性。由于森林砍伐、疾病传播和非法捕猎，大猩猩的生存受到严重威胁。山地大猩猩和东部低地大猩猩都处于极度濒危状态。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 非洲森林象 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3635/image/p1300x1300/Ele_daloa4_reduced.webp" alt="非洲森林象" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">非洲森林象</h2>
+                        <p class="species-description">
+                            非洲森林象是非洲象的一个亚种，体型较小，象牙更直。由于栖息地丧失和非法捕猎，其种群数量持续下降。保护非洲森林象对于维持生态系统的平衡具有重要意义。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 剑角牛 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3981/image/p1300x1300/WR202308_Saola_001_437460_edited.webp" alt="剑角牛" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">剑角牛</h2>
+                        <p class="species-description">
+                            剑角牛是1992年才被科学界发现的新物种，被称为"亚洲独角兽"。由于栖息地丧失和非法捕猎，这种神秘的动物正面临灭绝威胁。目前野外数量极少，保护工作刻不容缓。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 鸮鹦鹉 -->
+        <section class="species-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/3848/image/p1300x1300/AdobeStock_384667533_431571.webp" alt="鸮鹦鹉" class="species-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="species-info">
+                        <h2 class="species-title">鸮鹦鹉</h2>
+                        <p class="species-description">
+                            鸮鹦鹉是新西兰特有的夜行性鹦鹉，由于外来物种入侵和栖息地丧失，其种群数量急剧下降。目前仅存约200只，是世界上最濒危的鸟类之一。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

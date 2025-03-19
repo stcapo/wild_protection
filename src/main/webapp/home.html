@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>野生动物保护宣传平台</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .main-content {
+            padding: 2rem;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background: none;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1.5rem;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .feature-card {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            opacity: 0.8;
+        }
+        .notification-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 10px;
+        }
+        .species-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .species-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+        .species-info {
+            padding: 1rem;
+        }
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        .calendar-event {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contribution-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9ecef;
+            margin-right: 1rem;
+        }
+        .eco-tip {
+            background: #e8f5e9;
+            border-left: 4px solid #2ecc71;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0 10px 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-leaf me-2"></i>野生动物保护网</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="endangered-species.html"><i class="fas fa-paw me-1"></i> 物种保护</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="volunteer-service.html"><i class="fas fa-hands-helping me-1"></i> 志愿服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wildlife-protection-basics.html"><i class="fas fa-book-reader me-1"></i> 科普教育</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wildlife-observation-guide.html"><i class="fas fa-camera me-1"></i> 野外观察指南</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell me-1"></i>
+                            <span class="badge bg-danger notification-badge">2</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">紧急救助：发现受伤野生动物</a></li>
+                            <li><a class="dropdown-item" href="#">新活动：本周末护林行动</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> 欢迎回来，志愿者
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>个人中心</a></li>
+                            <li><a class="dropdown-item" href="my-achievements.html"><i class="fas fa-trophy me-2"></i>我的成就</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="logout"><i class="fas fa-sign-out-alt me-2"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Area -->
+            <div class="col-lg-8">
+                <div class="main-content">
+                    <!-- Emergency Alert -->
+                    <div class="alert alert-danger mb-4" role="alert">
+                        <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>紧急救助</h4>
+                        <p>云南发现受伤亚洲黑熊，正在进行救助。如果您在该地区，请保持警惕并及时报告相关信息。</p>
+                        <hr>
+                        <p class="mb-0">救助热线：<strong>400-123-4567</strong></p>
+                    </div>
+
+                    <!-- Latest News -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0"><i class="fas fa-newspaper me-2"></i>最新保护动态</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-item">
+                                <h6><i class="fas fa-star text-warning me-2"></i>大熊猫"团团"成功产下双胞胎</h6>
+                                <p class="text-muted mb-0">四川卧龙保护区传来喜讯，为我国大熊猫保护工作再添新成员...</p>
+                                <small class="text-muted">2小时前</small>
+                            </div>
+                            <div class="activity-item">
+                                <h6><i class="fas fa-leaf text-success me-2"></i>新建栖息地保护区正式启用</h6>
+                                <p class="text-muted mb-0">云南建立首个跨境野生动物保护区，面积达5000平方公里...</p>
+                                <small class="text-muted">5小时前</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Species -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0"><i class="fas fa-paw me-2"></i>本月濒危物种聚焦</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="species-card">
+                                        <img src="data:image/jpeg;base64,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" alt="雪豹">
+                                        <div class="species-info">
+                                            <h5>雪豹</h5>
+                                            <p class="text-muted">当前数量：约4,000只</p>
+                                            <p>栖息于青藏高原，是我国一级保护动物...</p>
+                                            <button class="btn btn-outline-success btn-sm" onclick="window.location.href='endangered-species.html'">了解更多</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="eco-tip">
+                                        <h6><i class="fas fa-lightbulb text-warning me-2"></i>保护小贴士</h6>
+                                        <p class="mb-0">雪豹栖息地保护需要我们共同努力：</p>
+                                        <ul class="mb-0">
+                                            <li>减少高原旅游对环境的影响</li>
+                                            <li>支持当地生态保护项目</li>
+                                            <li>提高公众保护意识</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="main-content">
+                    <!-- Volunteer Calendar -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0"><i class="fas fa-calendar-alt me-2"></i>近期志愿活动</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="calendar-event">
+                                <h6>护林行动</h6>
+                                <p class="text-muted mb-2">时间：本周六 09:00-17:00</p>
+                                <p class="mb-2">地点：云南西双版纳保护区</p>
+                                <button class="btn btn-success btn-sm">报名参加</button>
+                            </div>
+                            <div class="calendar-event">
+                                <h6>野生动物观察记录</h6>
+                                <p class="text-muted mb-2">时间：下周日 07:00-12:00</p>
+                                <p class="mb-2">地点：四川卧龙保护区</p>
+                                <button class="btn btn-success btn-sm">报名参加</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Educational Resources -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0"><i class="fas fa-book me-2"></i>教育资源</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="wildlife-protection-basics.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-play-circle me-2 text-danger"></i>
+                                    野生动物保护基础知识
+                                </a>
+                                <a href="endangered-species.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-file-pdf me-2 text-danger"></i>
+                                    濒危物种图鉴
+                                </a>
+                                <a href="wildlife-observation-guide.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-camera me-2 text-success"></i>
+                                    野外观察指南
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protection Data -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0"><i class="fas fa-chart-line me-2"></i>保护成果</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>大熊猫数量恢复</span>
+                                    <span>67%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 67%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>栖息地修复</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <small class="text-muted">数据更新时间：2024年3月</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 报名确认模态框 -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">确认报名</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="event-details mb-3">
+                        <h6 class="event-title fw-bold"></h6>
+                        <p class="event-time mb-1"></p>
+                        <p class="event-location mb-0"></p>
+                    </div>
+                    <p>是否确认报名参加该活动？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-success" id="confirmSignup">确认报名</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成功提示 Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="signupSuccessToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="fas fa-check-circle me-2"></i>
+                    报名成功！
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有报名按钮
+            const signupButtons = document.querySelectorAll('.calendar-event .btn-success');
+            const signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+            const successToast = new bootstrap.Toast(document.getElementById('signupSuccessToast'), {
+                animation: true,
+                autohide: true,
+                delay: 3000
+            });
+
+            // 为每个报名按钮添加点击事件
+            signupButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const eventCard = this.closest('.calendar-event');
+                    const eventTitle = eventCard.querySelector('h6').textContent;
+                    const eventTime = eventCard.querySelector('.text-muted').textContent;
+                    const eventLocation = eventCard.querySelector('p:not(.text-muted)').textContent;
+
+                    // 更新模态框内容
+                    document.querySelector('.event-title').textContent = eventTitle;
+                    document.querySelector('.event-time').textContent = eventTime;
+                    document.querySelector('.event-location').textContent = eventLocation;
+
+                    // 显示模态框
+                    signupModal.show();
+
+                    // 存储当前按钮引用
+                    document.getElementById('confirmSignup').setAttribute('data-button-id', button.getAttribute('data-button-id'));
+                });
+            });
+
+            // 为确认报名按钮添加点击事件
+            document.getElementById('confirmSignup').addEventListener('click', function() {
+                // 隐藏模态框
+                signupModal.hide();
+
+                // 获取对应的报名按钮
+                const buttonId = this.getAttribute('data-button-id');
+                const targetButton = document.querySelector(`.btn-success[data-button-id="${buttonId}"]`);
+
+                if (targetButton) {
+                    // 更新按钮状态
+                    targetButton.textContent = '已报名';
+                    targetButton.classList.remove('btn-success');
+                    targetButton.classList.add('btn-secondary');
+                    targetButton.disabled = true;
+
+                    // 添加淡出动画
+                    targetButton.style.transition = 'all 0.3s ease';
+                    targetButton.style.opacity = '0.7';
+                }
+
+                // 显示成功提示
+                setTimeout(() => {
+                    successToast.show();
+                }, 300);
+            });
+
+            // 为报名按钮添加唯一标识
+            signupButtons.forEach((button, index) => {
+                button.setAttribute('data-button-id', `signup-${index}`);
+            });
+        });
+    </script>
+</body>
+</html> 
