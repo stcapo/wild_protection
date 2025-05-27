@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保护动态 - 野生动物保护网</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .news-container {
+            padding: 4rem 0;
+        }
+        .news-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        .news-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .news-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+        }
+        .news-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .featured-news {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .featured-news-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .featured-news-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+            color: white;
+        }
+        .search-box {
+            border-radius: 50px;
+            padding-left: 20px;
+            border: 1px solid #ced4da;
+        }
+        .search-btn {
+            border-radius: 0 50px 50px 0;
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+        }
+        .categories-list .list-group-item {
+            border: none;
+            padding: 0.5rem 0;
+            background: transparent;
+        }
+        .categories-list .list-group-item.active {
+            background: transparent;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        .categories-list .list-group-item:hover {
+            color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html"><i class="fas fa-leaf me-2"></i>野生动物保护网</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html"><i class="fas fa-home me-1"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="endangered-species.html"><i class="fas fa-paw me-1"></i> 物种保护</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="volunteer-service.html"><i class="fas fa-hands-helping me-1"></i> 志愿服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wildlife-protection-basics.html"><i class="fas fa-book-reader me-1"></i> 科普教育</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wildlife-observation-guide.html"><i class="fas fa-camera me-1"></i> 野外观察指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="conservation-news.html"><i class="fas fa-newspaper me-1"></i> 保护动态</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donation.html"><i class="fas fa-hand-holding-heart me-1"></i> 捐赠支持</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community-forum.html"><i class="fas fa-comments me-1"></i> 社区论坛</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell me-1"></i>
+                            <span class="badge bg-danger rounded-pill">2</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">紧急救助：发现受伤野生动物</a></li>
+                            <li><a class="dropdown-item" href="#">新活动：本周末护林行动</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> 欢迎回来，志愿者
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="personal-center.html"><i class="fas fa-user me-2"></i>个人中心</a></li>
+                            <li><a class="dropdown-item" href="my-achievements.html"><i class="fas fa-trophy me-2"></i>我的成就</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="logout"><i class="fas fa-sign-out-alt me-2"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container news-container">
+        <div class="row mb-4">
+            <div class="col-lg-12">
+                <div class="featured-news">
+                    <img src="" alt="青海湖保护区新增鸟类品种" class="featured-news-img">
+                    <div class="featured-news-content">
+                        <span class="badge bg-primary">重要发现</span>
+                        <h1 class="mt-2">青海湖保护区新增鸟类品种</h1>
+                        <p class="mb-1">青海湖国家级自然保护区日前宣布，经过多年监测，保护区记录到的鸟类种类达189种，较建区初期增加了26种。</p>
+                        <p class="news-date"><i class="far fa-calendar-alt me-1"></i> 2024年3月15日</p>
+                        <a href="#" class="btn btn-light mt-2">阅读全文</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>最新动态</h2>
+                        <div class="input-group" style="max-width: 300px;">
+                            <input type="text" class="form-control search-box" placeholder="搜索新闻...">
+                            <button class="btn btn-success search-btn" type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card news-card">
+                                <div class="position-relative">
+                                    <span class="badge bg-success news-badge">保护成果</span>
+                                    <img src="" alt="大熊猫野外种群数量增长" class="news-img">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">大熊猫野外种群数量增长</h5>
+                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月10日</p>
+                                    <p class="card-text">最新监测数据显示，我国野生大熊猫数量已达1800余只，较十年前增长了16.8%。</p>
+                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card news-card">
+                                <div class="position-relative">
+                                    <span class="badge bg-danger news-badge">紧急状况</span>
+                                    <img src="" alt="云南发现非法贩卖野生动物案件" class="news-img">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">云南发现非法贩卖野生动物案件</h5>
+                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月8日</p>
+                                    <p class="card-text">执法部门在云南边境查获一起大规模野生动物走私案，解救多种珍稀保护动物。</p>
+                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card news-card">
+                                <div class="position-relative">
+                                    <span class="badge bg-info news-badge">研究成果</span>
+                                    <img src="" alt="新研究揭示气候变化对迁徙鸟类影响" class="news-img">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">新研究揭示气候变化对迁徙鸟类影响</h5>
+                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月5日</p>
+                                    <p class="card-text">中国科学院最新研究表明，气候变化正在改变多种候鸟的迁徙路线和时间。</p>
+                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card news-card">
+                                <div class="position-relative">
+                                    <span class="badge bg-warning text-dark news-badge">政策动态</span>
+                                    <img src="" alt="我国将加强湿地保护力度" class="news-img">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">我国将加强湿地保护力度</h5>
+                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月1日</p>
+                                    <p class="card-text">国家林草局发布新政策，未来五年将新建50处湿地保护区，恢复湿地面积200万公顷。</p>
+                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-4">
+                        <nav aria-label="新闻分页">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">下一页</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">新闻分类</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group categories-list">
+                            <li class="list-group-item active"><a href="#" class="text-decoration-none text-dark">全部新闻</a></li>
+                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">保护成果</a></li>
+                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">研究发现</a></li>
+                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">政策法规</a></li>
+                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">栖息地保护</a></li>
+                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">物种救助</a></li>
+                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">国际合作</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">热门标签</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#大熊猫</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#雪豹</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#栖息地保护</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#气候变化</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#湿地保护</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#野生动物贸易</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#生物多样性</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#濒危物种</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#候鸟迁徙</a>
+                            <a href="#" class="badge bg-light text-dark text-decoration-none p-2">#物种恢复</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">订阅动态</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>订阅我们的电子通讯，及时获取最新保护动态！</p>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="您的邮箱地址" aria-label="您的邮箱地址">
+                                <button class="btn btn-success" type="button">订阅</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/conservation-news/conservation-news.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+/* 捐赠页面样式 */
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.navbar {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.donation-container {
+    padding: 4rem 0;
+}
+
+.donation-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+
+.donation-card:hover {
+    transform: translateY(-5px);
+}
+
+.donation-banner {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+}
+
+.project-img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.project-stat {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.project-stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.testimonial-card {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.donor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.donor-quote {
+    font-style: italic;
+    color: #6c757d;
+}
+
+.payment-icon {
+    font-size: 2rem;
+    margin: 0 0.5rem;
+    color: #6c757d;
+}

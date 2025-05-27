@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区论坛 - 野生动物保护网</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="css/forum/forum-styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html"><i class="fas fa-leaf me-2"></i>野生动物保护网</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html"><i class="fas fa-home me-1"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="endangered-species.html"><i class="fas fa-paw me-1"></i> 物种保护</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="volunteer-service.html"><i class="fas fa-hands-helping me-1"></i> 志愿服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wildlife-protection-basics.html"><i class="fas fa-book-reader me-1"></i> 科普教育</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wildlife-observation-guide.html"><i class="fas fa-camera me-1"></i> 野外观察指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="conservation-news.html"><i class="fas fa-newspaper me-1"></i> 保护动态</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donation.html"><i class="fas fa-hand-holding-heart me-1"></i> 捐赠支持</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="community-forum.html"><i class="fas fa-comments me-1"></i> 社区论坛</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell me-1"></i>
+                            <span class="badge bg-danger rounded-pill">2</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">紧急救助：发现受伤野生动物</a></li>
+                            <li><a class="dropdown-item" href="#">新活动：本周末护林行动</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> 欢迎回来，志愿者
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="personal-center.html"><i class="fas fa-user me-2"></i>个人中心</a></li>
+                            <li><a class="dropdown-item" href="my-achievements.html"><i class="fas fa-trophy me-2"></i>我的成就</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="logout"><i class="fas fa-sign-out-alt me-2"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container forum-container">
+        <!-- Banner -->
+        <div class="forum-banner text-center">
+            <h1 class="display-4">野保社区论坛</h1>
+            <p class="lead">在这里交流野生动物保护经验、分享观察心得，共同为生物多样性保护出一份力</p>
+            <button class="btn btn-success btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#newTopicModal">
+                <i class="fas fa-plus-circle me-2"></i>发布新话题
+            </button>
+        </div>
+
+        <div class="row">
+            <!-- 主内容区 -->
+            <div class="col-lg-8">
+                <!-- 话题分类标签 -->
+                <div class="mb-4">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">全部话题</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">物种保护</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">志愿服务</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">科普教育</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">野外观察</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 话题列表 -->
+                <div class="card forum-card">
+                    <div class="card-header bg-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">最新话题</h5>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    排序方式 <i class="fas fa-sort-amount-down-alt ms-1"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item active" href="#"><i class="fas fa-calendar-alt me-2"></i>最新发布</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-fire-alt me-2"></i>热门讨论</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-reply me-2"></i>最新回复</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="topic-list">
+                            <li class="topic-item">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="d-flex">
+                                            <img src="" alt="用户头像" class="user-avatar me-3">
+                                            <div>
+                                                <a href="#" class="topic-title d-block">在四川卧龙拍摄到野生大熊猫，分享我的观察经验</a>
+                                                <div class="topic-info">
+                                                    <span class="topic-category category-observation">野外观察</span>
+                                                    <span class="ms-2">由 <a href="#">大熊猫爱好者</a> 发布于 2024-03-20</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row topic-stats">
+                                            <div class="col-4">
+                                                <div class="text-muted">浏览</div>
+                                                <div>328</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">回复</div>
+                                                <div>42</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">最后回复</div>
+                                                <div>2小时前</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="topic-item">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="d-flex">
+                                            <img src="" alt="用户头像" class="user-avatar me-3">
+                                            <div>
+                                                <a href="#" class="topic-title d-block">关于"云南野生动物保护志愿者招募"活动的一些问题</a>
+                                                <div class="topic-info">
+                                                    <span class="topic-category category-volunteer">志愿服务</span>
+                                                    <span class="ms-2">由 <a href="#">新手志愿者</a> 发布于 2024-03-19</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row topic-stats">
+                                            <div class="col-4">
+                                                <div class="text-muted">浏览</div>
+                                                <div>156</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">回复</div>
+                                                <div>23</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">最后回复</div>
+                                                <div>5小时前</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="topic-item">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="d-flex">
+                                            <img src="" alt="用户头像" class="user-avatar me-3">
+                                            <div>
+                                                <a href="#" class="topic-title d-block">如何向孩子普及野生动物保护知识？分享一些我的教育经验</a>
+                                                <div class="topic-info">
+                                                    <span class="topic-category category-education">科普教育</span>
+                                                    <span class="ms-2">由 <a href="#">环保教师</a> 发布于 2024-03-18</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row topic-stats">
+                                            <div class="col-4">
+                                                <div class="text-muted">浏览</div>
+                                                <div>285</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">回复</div>
+                                                <div>36</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">最后回复</div>
+                                                <div>1天前</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="topic-item">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="d-flex">
+                                            <img src="" alt="用户头像" class="user-avatar me-3">
+                                            <div>
+                                                <a href="#" class="topic-title d-block">雪豹保护现状与挑战 - 青海调研报告分享</a>
+                                                <div class="topic-info">
+                                                    <span class="topic-category category-protection">物种保护</span>
+                                                    <span class="ms-2">由 <a href="#">雪豹研究员</a> 发布于 2024-03-17</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row topic-stats">
+                                            <div class="col-4">
+                                                <div class="text-muted">浏览</div>
+                                                <div>427</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">回复</div>
+                                                <div>58</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">最后回复</div>
+                                                <div>2天前</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="topic-item">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="d-flex">
+                                            <img src="" alt="用户头像" class="user-avatar me-3">
+                                            <div>
+                                                <a href="#" class="topic-title d-block">推荐几款野外观察用的相机和望远镜</a>
+                                                <div class="topic-info">
+                                                    <span class="topic-category category-observation">野外观察</span>
+                                                    <span class="ms-2">由 <a href="#">摄影爱好者</a> 发布于 2024-03-15</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row topic-stats">
+                                            <div class="col-4">
+                                                <div class="text-muted">浏览</div>
+                                                <div>312</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">回复</div>
+                                                <div>47</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-muted">最后回复</div>
+                                                <div>3天前</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <nav aria-label="话题分页">
+                            <ul class="pagination justify-content-center mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">上一页</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">下一页</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 侧边栏 -->
+            <div class="col-lg-4 forum-sidebar">
+                <!-- 搜索框 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="搜索话题...">
+                            <button class="btn btn-success" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 热门话题 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="sidebar-title">热门话题</h5>
+                        <div class="hot-topic">
+                            <div class="hot-topic-icon top-1">1</div>
+                            <div>
+                                <a href="#" class="fw-bold">雪豹保护现状与挑战 - 青海调研报告分享</a>
+                                <div class="small text-muted">427次浏览 · 58条回复</div>
+                            </div>
+                        </div>
+                        <div class="hot-topic">
+                            <div class="hot-topic-icon top-2">2</div>
+                            <div>
+                                <a href="#" class="fw-bold">在四川卧龙拍摄到野生大熊猫，分享我的观察经验</a>
+                                <div class="small text-muted">328次浏览 · 42条回复</div>
+                            </div>
+                        </div>
+                        <div class="hot-topic">
+                            <div class="hot-topic-icon top-3">3</div>
+                            <div>
+                                <a href="#" class="fw-bold">推荐几款野外观察用的相机和望远镜</a>
+                                <div class="small text-muted">312次浏览 · 47条回复</div>
+                            </div>
+                        </div>
+                        <div class="hot-topic">
+                            <div class="hot-topic-icon">4</div>
+                            <div>
+                                <a href="#" class="fw-bold">如何向孩子普及野生动物保护知识？分享一些我的教育经验</a>
+                                <div class="small text-muted">285次浏览 · 36条回复</div>
+                            </div>
+                        </div>
+                        <div class="hot-topic">
+                            <div class="hot-topic-icon">5</div>
+                            <div>
+                                <a href="#" class="fw-bold">青海湖候鸟保护志愿者招募中，欢迎加入！</a>
+                                <div class="small text-muted">265次浏览 · 32条回复</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 社区规则 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="sidebar-title">社区规则</h5>
+                        <ul class="ps-3 mb-0">
+                            <li class="mb-2">尊重每位社区成员，保持友善讨论氛围</li>
+                            <li class="mb-2">发布内容应与野生动物保护相关</li>
+                            <li class="mb-2">禁止发布侵犯野生动物权益的内容</li>
+                            <li class="mb-2">禁止发布商业广告或垃圾内容</li>
+                            <li>违反规则的内容将被删除，严重者将被禁言</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 活动日历 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="sidebar-title">近期活动</h5>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action border-0 ps-0">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">青海湖候鸟保护志愿者活动</h6>
+                                    <small class="text-success">报名中</small>
+                                </div>
+                                <p class="mb-1 text-muted small">2024-04-10 至 2024-04-15</p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0 ps-0">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">西双版纳雨林生态调查</h6>
+                                    <small class="text-success">报名中</small>
+                                </div>
+                                <p class="mb-1 text-muted small">2024-04-20 至 2024-04-25</p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0 ps-0">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">长江流域水鸟监测</h6>
+                                    <small class="text-secondary">即将开始</small>
+                                </div>
+                                <p class="mb-1 text-muted small">2024-05-01 至 2024-05-07</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 发布新话题模态框 -->
+    <div class="modal fade" id="newTopicModal" tabindex="-1" aria-labelledby="newTopicModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newTopicModalLabel">发布新话题</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="new-post-form">
+                        <div class="mb-3">
+                            <label for="topicTitle" class="form-label">话题标题</label>
+                            <input type="text" class="form-control" id="topicTitle" placeholder="请输入标题（5-100个字符）">
+                        </div>
+                        <div class="mb-3">
+                            <label for="topicCategory" class="form-label">话题分类</label>
+                            <select class="form-select" id="topicCategory">
+                                <option value="">请选择分类</option>
+                                <option value="protection">物种保护</option>
+                                <option value="volunteer">志愿服务</option>
+                                <option value="education">科普教育</option>
+                                <option value="observation">野外观察</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="topicContent" class="form-label">内容</label>
+                            <textarea class="form-control" id="topicContent" rows="6" placeholder="请输入话题内容..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="topicImage" class="form-label">添加图片（可选）</label>
+                            <input class="form-control" type="file" id="topicImage" accept="image/*">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="followTopic" checked>
+                            <label class="form-check-label" for="followTopic">
+                                关注此话题，有新回复时通知我
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-success" id="publishTopicBtn">发布话题</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 发布成功模态框 -->
+    <div class="modal fade" id="publishSuccessModal" tabindex="-1" aria-labelledby="publishSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="publishSuccessModalLabel">发布成功</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-5">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3">话题发布成功！</h4>
+                    <p>您的话题已经成功发布到社区论坛。</p>
+                    <p class="text-muted">感谢您的分享，一起为野生动物保护出一份力！</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">查看我的话题</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 论坛自定义脚本 -->
+    <script src="js/forum/forum-scripts.js"></script>
+    
+    <script>
+        // 快速检查模态框功能
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Document loaded');
+            
+            // 检查Bootstrap是否正确加载
+            if (typeof bootstrap !== 'undefined') {
+                console.log('Bootstrap loaded successfully');
+                // 立即测试模态框功能
+                const testModal = document.getElementById('newTopicModal');
+                if (testModal) {
+                    console.log('Modal element found');
+                    try {
+                        const bsModal = new bootstrap.Modal(testModal);
+                        console.log('Modal initialized successfully', bsModal);
+                    } catch (e) {
+                        console.error('Error initializing modal:', e);
+                    }
+                }
+            } else {
+                console.error('Bootstrap not loaded properly');
+            }
+            
+            // 手动添加模态框事件监听
+            const modalButton = document.querySelector('[data-bs-toggle="modal"][data-bs-target="#newTopicModal"]');
+            if (modalButton) {
+                console.log('Modal button found');
+                modalButton.addEventListener('click', function() {
+                    console.log('Modal button clicked');
+                });
+            } else {
+                console.error('Modal button not found');
+            }
+            
+            // 直接添加发布按钮事件
+            const publishButton = document.getElementById('publishTopicBtn');
+            if (publishButton) {
+                console.log('Publish button found in inline script');
+                publishButton.addEventListener('click', function() {
+                    console.log('Publish button clicked from inline script');
+                    // 测试模态框显示
+                    try {
+                        const successModal = new bootstrap.Modal(document.getElementById('publishSuccessModal'));
+                        successModal.show();
+                        console.log('Success modal shown');
+                    } catch (e) {
+                        console.error('Error showing success modal:', e);
+                    }
+                });
+            } else {
+                console.error('Publish button not found in inline script');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!-- 捐赠确认模态框 -->
+<div class="modal fade" id="donationConfirmModal" tabindex="-1" aria-labelledby="donationConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="donationConfirmModalLabel">确认捐赠</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-4">
+                    <i class="fas fa-hand-holding-heart text-success" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3">感谢您的慷慨支持！</h4>
+                    <p class="mb-0">您的捐赠将帮助我们保护更多野生动物及其栖息地。</p>
+                </div>
+                <div class="donation-summary mb-4">
+                    <h5 class="mb-3">捐赠详情:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            捐赠金额
+                            <span class="fw-bold">¥50.00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            支持项目
+                            <span>常规捐赠</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            支付方式
+                            <span>微信支付</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="qr-container text-center py-2">
+                    <p class="mb-2">请扫描下方二维码完成支付：</p>
+                    <img src="" alt="支付二维码" style="width: 200px; height: 200px; border: 1px solid #ddd;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#donationSuccessModal">确认已支付</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 捐赠成功模态框 -->
+<div class="modal fade" id="donationSuccessModal" tabindex="-1" aria-labelledby="donationSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="donationSuccessModalLabel">捐赠成功</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                <h4 class="mt-3">感谢您的捐赠！</h4>
+                <p>您的支持对我们的工作至关重要。</p>
+                <p>我们已向您的邮箱发送了捐赠确认信，您也可以在个人中心查看捐赠记录。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                <a href="personal-center.html" class="btn btn-success">查看我的捐赠</a>
+            </div>
+        </div>
+    </div>
+</div>
