@@ -25,9 +25,33 @@
         }
         .guide-section {
             margin-bottom: 2rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .guide-section:hover {
+            transform: translateY(-5px);
         }
         .guide-section h2 {
             color: #27ae60;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .guide-section h2 i {
+            margin-right: 0.5rem;
+            color: #2ecc71;
+        }
+        .guide-category {
+            display: inline-block;
+            background: #e8f5e8;
+            color: #27ae60;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -96,90 +120,72 @@
     <!-- Main Content -->
     <div class="container content">
         <h1 class="text-center mb-5">野外观察指南</h1>
-        <div class="guide-section">
-            <h2>选择合适的观察时间</h2>
-            <p>野生动物的活动时间因种类而异，清晨和黄昏是大多数动物最活跃的时间段。</p>
+
+        <!-- Loading indicator -->
+        <div id="loading" class="text-center py-5">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">加载中...</span>
+            </div>
+            <p class="mt-3">正在加载观察指南...</p>
         </div>
-        <div class="guide-section">
-            <h2>穿着合适的服装</h2>
-            <p>选择与环境颜色相近的衣物，避免鲜艳的颜色，以减少对野生动物的干扰。</p>
-        </div>
-        <div class="guide-section">
-            <h2>携带必备装备</h2>
-            <p>包括望远镜、相机、笔记本、指南针、急救包和足够的水和食物。</p>
-        </div>
-        <div class="guide-section">
-            <h2>了解观察区域</h2>
-            <p>提前研究观察区域的地形、气候和常见野生动物，制定合理的观察路线。</p>
-        </div>
-        <div class="guide-section">
-            <h2>保持安静</h2>
-            <p>尽量减少噪音，轻声交谈，避免突然的动作，以免惊吓野生动物。</p>
-        </div>
-        <div class="guide-section">
-            <h2>使用望远镜</h2>
-            <p>望远镜可以帮助您在不打扰动物的情况下进行远距离观察，选择适合的放大倍数。</p>
-        </div>
-        <div class="guide-section">
-            <h2>记录观察结果</h2>
-            <p>使用笔记本或手机记录观察到的动物种类、数量、行为和栖息地信息。</p>
-        </div>
-        <div class="guide-section">
-            <h2>避免干扰动物</h2>
-            <p>不要试图接近或触摸野生动物，保持安全距离，尊重它们的自然行为。</p>
-        </div>
-        <div class="guide-section">
-            <h2>注意天气变化</h2>
-            <p>提前查看天气预报，携带防雨装备，避免在恶劣天气下进行观察。</p>
-        </div>
-        <div class="guide-section">
-            <h2>遵守当地法规</h2>
-            <p>了解并遵守观察区域的保护法规，不进入禁止区域，不破坏自然环境。</p>
-        </div>
-        <div class="guide-section">
-            <h2>团队协作</h2>
-            <p>如果是团队观察，提前分配任务，保持沟通，确保每个人的安全。</p>
-        </div>
-        <div class="guide-section">
-            <h2>识别动物踪迹</h2>
-            <p>学习识别动物的足迹、粪便和巢穴，这些线索可以帮助您找到动物。</p>
-        </div>
-        <div class="guide-section">
-            <h2>使用伪装技巧</h2>
-            <p>在观察点搭建简易伪装，如使用树枝和树叶，以减少被动物发现的概率。</p>
-        </div>
-        <div class="guide-section">
-            <h2>注意个人卫生</h2>
-            <p>在野外避免随意丢弃垃圾，使用环保袋携带废弃物，保护自然环境。</p>
-        </div>
-        <div class="guide-section">
-            <h2>学习急救知识</h2>
-            <p>掌握基本的急救技能，如处理割伤、扭伤和动物咬伤，确保自身安全。</p>
-        </div>
-        <div class="guide-section">
-            <h2>观察鸟类技巧</h2>
-            <p>鸟类观察时，注意倾听鸟鸣声，使用鸟类图鉴识别种类，记录行为特征。</p>
-        </div>
-        <div class="guide-section">
-            <h2>夜间观察准备</h2>
-            <p>夜间观察时，携带头灯或手电筒，注意避免强光直射动物，以免惊扰它们。</p>
-        </div>
-        <div class="guide-section">
-            <h2>观察水生动物</h2>
-            <p>在水边观察时，注意防滑，避免靠近深水区，使用防水装备保护电子设备。</p>
-        </div>
-        <div class="guide-section">
-            <h2>分享观察经验</h2>
-            <p>将您的观察结果和经验分享给其他爱好者，促进知识交流和环境保护意识。</p>
-        </div>
-        <div class="guide-section">
-            <h2>持续学习</h2>
-            <p>通过书籍、纪录片和专家讲座不断学习野生动物知识，提升观察技能。</p>
-        </div>
+
+        <!-- Guides container -->
+        <div id="guides-container"></div>
     </div>
 
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            loadWildlifeGuides();
+        });
+
+        function loadWildlifeGuides() {
+            $.get('api/wildlife-guides', function(response) {
+                $('#loading').hide();
+                if (response.success && response.data) {
+                    displayGuides(response.data);
+                } else {
+                    showError('加载观察指南失败');
+                }
+            }).fail(function() {
+                $('#loading').hide();
+                showError('网络错误，请稍后重试');
+            });
+        }
+
+        function displayGuides(guides) {
+            const container = $('#guides-container');
+            container.empty();
+
+            guides.forEach(function(guide) {
+                const guideHtml = `
+                    <div class="guide-section">
+                        <div class="guide-category">${guide.category}</div>
+                        <h2>
+                            <i class="${guide.icon}"></i>
+                            ${guide.title}
+                        </h2>
+                        <p>${guide.content}</p>
+                    </div>
+                `;
+                container.append(guideHtml);
+            });
+        }
+
+        function showError(message) {
+            const errorHtml = `
+                <div class="alert alert-danger text-center" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    ${message}
+                </div>
+            `;
+            $('#guides-container').html(errorHtml);
+        }
+    </script>
 </body>
-</html> 
+</html>

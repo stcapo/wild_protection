@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员后台 - WP系统</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .sidebar {
+            background: white;
+            min-height: calc(100vh - 76px);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 0;
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #f8f9fa;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        .sidebar .nav-link.active {
+            background-color: #667eea;
+            color: white;
+        }
+        .main-content {
+            padding: 30px;
+        }
+        .dashboard-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .welcome-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .quick-action-btn {
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .quick-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-user-shield me-2"></i>WP管理系统</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> 管理员
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="home.html"><i class="fas fa-home me-2"></i>前台首页</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="logout"><i class="fas fa-sign-out-alt me-2"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <nav class="nav flex-column">
+                    <a class="nav-link active" href="#" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt me-2"></i>仪表盘
+                    </a>
+                    <a class="nav-link" href="#" data-section="species-management">
+                        <i class="fas fa-paw me-2"></i>物种管理
+                    </a>
+                    <a class="nav-link" href="#" data-section="user-management">
+                        <i class="fas fa-users me-2"></i>用户管理
+                    </a>
+                    <a class="nav-link" href="#" data-section="volunteer-management">
+                        <i class="fas fa-hands-helping me-2"></i>志愿服务管理
+                    </a>
+                    <a class="nav-link" href="#" data-section="guide-management">
+                        <i class="fas fa-camera me-2"></i>观察指南管理
+                    </a>
+                    <a class="nav-link" href="#" data-section="news-management">
+                        <i class="fas fa-newspaper me-2"></i>保护动态管理
+                    </a>
+                    <a class="nav-link" href="#" data-section="content-management">
+                        <i class="fas fa-edit me-2"></i>内容管理
+                    </a>
+                    <a class="nav-link" href="#" data-section="system-settings">
+                        <i class="fas fa-cog me-2"></i>系统设置
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <!-- Dashboard Section -->
+                <div id="dashboard-section" class="content-section">
+                    <div class="welcome-section">
+                        <h1><i class="fas fa-crown me-3"></i>欢迎来到管理后台</h1>
+                        <p class="mb-0">野生动物保护网站管理系统 - 让我们一起保护地球上的珍贵生命</p>
+                    </div>
+
+                    <!-- Statistics Cards -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-paw fa-2x mb-3"></i>
+                                <div class="stat-number" id="species-count">0</div>
+                                <div>濒危物种</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-users fa-2x mb-3"></i>
+                                <div class="stat-number" id="user-count">0</div>
+                                <div>注册用户</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-newspaper fa-2x mb-3"></i>
+                                <div class="stat-number" id="news-count">0</div>
+                                <div>新闻动态</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-heart fa-2x mb-3"></i>
+                                <div class="stat-number" id="donation-count">0</div>
+                                <div>捐赠项目</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-bolt me-2"></i>快速操作</h5>
+                            <div class="text-center">
+                                <button class="btn btn-primary quick-action-btn" onclick="showSection('species-management')">
+                                    <i class="fas fa-plus me-2"></i>添加物种
+                                </button>
+                                <button class="btn btn-success quick-action-btn" onclick="showSection('user-management')">
+                                    <i class="fas fa-user-plus me-2"></i>管理用户
+                                </button>
+                                <button class="btn btn-info quick-action-btn" onclick="showSection('content-management')">
+                                    <i class="fas fa-edit me-2"></i>编辑内容
+                                </button>
+                                <button class="btn btn-warning quick-action-btn" onclick="window.open('home.html', '_blank')">
+                                    <i class="fas fa-eye me-2"></i>预览网站
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Species Management Section -->
+                <div id="species-management-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-paw me-3"></i>物种管理</h2>
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">濒危物种列表</h5>
+                                <button class="btn btn-primary" onclick="showAddSpeciesModal()">
+                                    <i class="fas fa-plus me-2"></i>添加新物种
+                                </button>
+                            </div>
+                            <div id="species-table-container">
+                                <!-- Species table will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Management Section -->
+                <div id="user-management-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-users me-3"></i>用户管理</h2>
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">用户列表</h5>
+                                <button class="btn btn-primary" onclick="showAddUserModal()">
+                                    <i class="fas fa-user-plus me-2"></i>添加新用户
+                                </button>
+                            </div>
+                            <div id="user-table-container">
+                                <!-- User table will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteer Management Section -->
+                <div id="volunteer-management-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-hands-helping me-3"></i>志愿服务管理</h2>
+
+                    <!-- Activities Management -->
+                    <div class="dashboard-card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">志愿活动管理</h5>
+                                <button class="btn btn-primary" onclick="showAddActivityModal()">
+                                    <i class="fas fa-plus me-2"></i>添加新活动
+                                </button>
+                            </div>
+                            <div id="activity-table-container">
+                                <!-- Activity table will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registrations Management -->
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">报名管理</h5>
+                            <div id="registration-table-container">
+                                <!-- Registration table will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guide Management Section -->
+                <div id="guide-management-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-camera me-3"></i>观察指南管理</h2>
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">观察指南列表</h5>
+                                <button class="btn btn-primary" onclick="showAddGuideModal()">
+                                    <i class="fas fa-plus me-2"></i>添加新指南
+                                </button>
+                            </div>
+                            <div id="guide-table-container">
+                                <!-- Guide table will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Management Section -->
+                <div id="news-management-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-newspaper me-3"></i>保护动态管理</h2>
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">保护动态列表</h5>
+                                <button class="btn btn-primary" onclick="showAddNewsModal()">
+                                    <i class="fas fa-plus me-2"></i>添加新动态
+                                </button>
+                            </div>
+                            <div id="news-table-container">
+                                <!-- News table will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-management-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-edit me-3"></i>内容管理</h2>
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <p>内容管理功能正在开发中...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="system-settings-section" class="content-section" style="display: none;">
+                    <h2><i class="fas fa-cog me-3"></i>系统设置</h2>
+                    <div class="dashboard-card">
+                        <div class="card-body">
+                            <p>系统设置功能正在开发中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Species Modal -->
+    <div class="modal fade" id="speciesModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="speciesModalTitle">添加新物种</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="speciesForm">
+                        <input type="hidden" id="speciesId" name="id">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="speciesName" class="form-label">物种名称 *</label>
+                                    <input type="text" class="form-control" id="speciesName" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="scientificName" class="form-label">学名</label>
+                                    <input type="text" class="form-control" id="scientificName" name="scientificName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imageUrl" class="form-label">图片URL</label>
+                            <input type="url" class="form-control" id="imageUrl" name="imageUrl">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">描述 *</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="conservationStatus" class="form-label">保护状态</label>
+                                    <select class="form-control" id="conservationStatus" name="conservationStatus">
+                                        <option value="极度濒危">极度濒危</option>
+                                        <option value="濒危">濒危</option>
+                                        <option value="易危">易危</option>
+                                        <option value="近危">近危</option>
+                                        <option value="无危">无危</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="populationCount" class="form-label">种群数量</label>
+                                    <input type="text" class="form-control" id="populationCount" name="populationCount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="habitat" class="form-label">栖息地</label>
+                            <input type="text" class="form-control" id="habitat" name="habitat">
+                        </div>
+                        <div class="mb-3">
+                            <label for="threats" class="form-label">威胁因素</label>
+                            <textarea class="form-control" id="threats" name="threats" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="conservationEfforts" class="form-label">保护措施</label>
+                            <textarea class="form-control" id="conservationEfforts" name="conservationEfforts" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveSpecies()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userModalTitle">添加新用户</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="userForm">
+                        <input type="hidden" id="userId" name="id">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="userUsername" class="form-label">用户名 *</label>
+                                    <input type="text" class="form-control" id="userUsername" name="username" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="userPassword" class="form-label">密码 <span id="passwordHint">*</span></label>
+                                    <input type="password" class="form-control" id="userPassword" name="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="userEmail" class="form-label">邮箱 *</label>
+                                    <input type="email" class="form-control" id="userEmail" name="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="userFullName" class="form-label">姓名 *</label>
+                                    <input type="text" class="form-control" id="userFullName" name="fullName" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userRole" class="form-label">角色</label>
+                            <select class="form-control" id="userRole" name="role">
+                                <option value="user">普通用户</option>
+                                <option value="admin">管理员</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveUser()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activity Modal -->
+    <div class="modal fade" id="activityModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="activityModalTitle">添加新活动</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="activityForm">
+                        <input type="hidden" id="activityId" name="id">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="activityTitle" class="form-label">活动标题 *</label>
+                                    <input type="text" class="form-control" id="activityTitle" name="title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="activityDate" class="form-label">活动日期 *</label>
+                                    <input type="date" class="form-control" id="activityDate" name="activityDate" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="activityDescription" class="form-label">活动描述</label>
+                            <textarea class="form-control" id="activityDescription" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="activityLocation" class="form-label">活动地点 *</label>
+                                    <input type="text" class="form-control" id="activityLocation" name="location" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="maxParticipants" class="form-label">最大人数</label>
+                                    <input type="number" class="form-control" id="maxParticipants" name="maxParticipants" min="1" value="50">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="activityStatus" class="form-label">状态</label>
+                                    <select class="form-control" id="activityStatus" name="status">
+                                        <option value="open">开放报名</option>
+                                        <option value="closed">关闭报名</option>
+                                        <option value="completed">已完成</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="activityRequirements" class="form-label">参与要求</label>
+                            <textarea class="form-control" id="activityRequirements" name="requirements" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactInfo" class="form-label">联系方式</label>
+                            <input type="text" class="form-control" id="contactInfo" name="contactInfo">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveActivity()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guide Modal -->
+    <div class="modal fade" id="guideModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="guideModalTitle">添加新指南</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="guideForm">
+                        <input type="hidden" id="guideId" name="id">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="guideTitle" class="form-label">指南标题 *</label>
+                                    <input type="text" class="form-control" id="guideTitle" name="title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="guideCategory" class="form-label">分类</label>
+                                    <input type="text" class="form-control" id="guideCategory" name="category" placeholder="如：基础准备">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="guideContent" class="form-label">指南内容 *</label>
+                            <textarea class="form-control" id="guideContent" name="content" rows="4" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="guideIcon" class="form-label">图标类名</label>
+                                    <input type="text" class="form-control" id="guideIcon" name="icon" placeholder="如：fas fa-clock">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="displayOrder" class="form-label">显示顺序</label>
+                                    <input type="number" class="form-control" id="displayOrder" name="displayOrder" min="0" value="0">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="isActive" class="form-label">状态</label>
+                                    <select class="form-control" id="isActive" name="isActive">
+                                        <option value="true">启用</option>
+                                        <option value="false">禁用</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveGuide()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Modal -->
+    <div class="modal fade" id="newsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsModalTitle">添加新动态</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newsForm">
+                        <input type="hidden" id="newsId" name="id">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="newsTitle" class="form-label">标题 *</label>
+                                    <input type="text" class="form-control" id="newsTitle" name="title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="publishDate" class="form-label">发布日期 *</label>
+                                    <input type="date" class="form-control" id="publishDate" name="publishDate" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newsSummary" class="form-label">摘要 *</label>
+                            <textarea class="form-control" id="newsSummary" name="summary" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newsContent" class="form-label">内容 *</label>
+                            <textarea class="form-control" id="newsContent" name="content" rows="6" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="newsCategory" class="form-label">分类</label>
+                                    <select class="form-control" id="newsCategory" name="category">
+                                        <option value="保护成果">保护成果</option>
+                                        <option value="紧急状况">紧急状况</option>
+                                        <option value="研究成果">研究成果</option>
+                                        <option value="政策动态">政策动态</option>
+                                        <option value="国际合作">国际合作</option>
+                                        <option value="科学发现">科学发现</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="badgeColor" class="form-label">标签颜色</label>
+                                    <select class="form-control" id="badgeColor" name="badgeColor">
+                                        <option value="bg-success">绿色 (成功)</option>
+                                        <option value="bg-danger">红色 (紧急)</option>
+                                        <option value="bg-info">蓝色 (信息)</option>
+                                        <option value="bg-warning">黄色 (警告)</option>
+                                        <option value="bg-primary">主色 (重要)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="newsAuthor" class="form-label">作者</label>
+                                    <input type="text" class="form-control" id="newsAuthor" name="author">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imageUrl" class="form-label">图片URL</label>
+                            <input type="url" class="form-control" id="imageUrl" name="imageUrl">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="isFeatured" name="isFeatured">
+                                    <label class="form-check-label" for="isFeatured">
+                                        设为推荐新闻
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="isPublished" name="isPublished" checked>
+                                    <label class="form-check-label" for="isPublished">
+                                        立即发布
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNews()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            loadDashboardStats();
+            loadSpeciesManagement();
+            loadUserManagement();
+            loadVolunteerManagement();
+            loadGuideManagement();
+            loadNewsManagement();
+
+            // Sidebar navigation
+            $('.sidebar .nav-link').click(function(e) {
+                e.preventDefault();
+                $('.sidebar .nav-link').removeClass('active');
+                $(this).addClass('active');
+
+                const section = $(this).data('section');
+                showSection(section);
+
+                // Load data when switching sections
+                if (section === 'user-management') {
+                    loadUserManagement();
+                } else if (section === 'volunteer-management') {
+                    loadVolunteerManagement();
+                } else if (section === 'guide-management') {
+                    loadGuideManagement();
+                } else if (section === 'news-management') {
+                    loadNewsManagement();
+                }
+            });
+        });
+
+        function showSection(sectionName) {
+            $('.content-section').hide();
+            $(`#${sectionName}-section`).show();
+
+            // Update active nav link
+            $('.sidebar .nav-link').removeClass('active');
+            $(`.sidebar .nav-link[data-section="${sectionName}"]`).addClass('active');
+        }
+
+        function loadDashboardStats() {
+            // Load species count
+            $.get('api/species', function(response) {
+                if (response.success) {
+                    $('#species-count').text(response.data.length);
+                }
+            });
+
+            // Load user count
+            $.get('api/users', function(response) {
+                if (response.success) {
+                    $('#user-count').text(response.data.length);
+                }
+            });
+
+            // Mock data for other stats
+            $('#news-count').text('23');
+            $('#donation-count').text('8');
+        }
+
+        function loadSpeciesManagement() {
+            $.get('api/species', function(response) {
+                if (response.success) {
+                    displaySpeciesTable(response.data);
+                } else {
+                    $('#species-table-container').html('<div class="alert alert-danger">加载物种数据失败</div>');
+                }
+            }).fail(function() {
+                $('#species-table-container').html('<div class="alert alert-danger">网络错误，请稍后重试</div>');
+            });
+        }
+
+        function displaySpeciesTable(speciesData) {
+            let tableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>物种名称</th>
+                                <th>学名</th>
+                                <th>保护状态</th>
+                                <th>种群数量</th>
+                                <th>栖息地</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            speciesData.forEach(function(species) {
+                tableHtml += `
+                    <tr>
+                        <td>${species.id}</td>
+                        <td>${species.name}</td>
+                        <td>${species.scientificName || '未知'}</td>
+                        <td><span class="badge bg-danger">${species.conservationStatus}</span></td>
+                        <td>${species.populationCount}</td>
+                        <td>${species.habitat}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-1" onclick="editSpecies(${species.id})">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteSpecies(${species.id}, '${species.name}')">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            $('#species-table-container').html(tableHtml);
+        }
+
+        function showAddSpeciesModal() {
+            $('#speciesModalTitle').text('添加新物种');
+            $('#speciesForm')[0].reset();
+            $('#speciesId').val('');
+            $('#speciesModal').modal('show');
+        }
+
+        function editSpecies(id) {
+            $.get('api/species', function(response) {
+                if (response.success) {
+                    const species = response.data.find(s => s.id === id);
+                    if (species) {
+                        $('#speciesModalTitle').text('编辑物种信息');
+                        $('#speciesId').val(species.id);
+                        $('#speciesName').val(species.name);
+                        $('#scientificName').val(species.scientificName);
+                        $('#imageUrl').val(species.imageUrl);
+                        $('#description').val(species.description);
+                        $('#conservationStatus').val(species.conservationStatus);
+                        $('#populationCount').val(species.populationCount);
+                        $('#habitat').val(species.habitat);
+                        $('#threats').val(species.threats);
+                        $('#conservationEfforts').val(species.conservationEfforts);
+                        $('#speciesModal').modal('show');
+                    }
+                }
+            });
+        }
+
+        function deleteSpecies(id, name) {
+            if (confirm(`确定要删除物种 "${name}" 吗？此操作不可撤销。`)) {
+                $.post('admin/species', {
+                    action: 'delete',
+                    id: id
+                }, function(response) {
+                    if (response.success) {
+                        alert('删除成功');
+                        loadSpeciesManagement();
+                    } else {
+                        alert('删除失败: ' + response.message);
+                    }
+                }).fail(function() {
+                    alert('网络错误，请稍后重试');
+                });
+            }
+        }
+
+        function saveSpecies() {
+            const form = $('#speciesForm');
+            const formData = form.serialize();
+            const isEdit = $('#speciesId').val() !== '';
+            const action = isEdit ? 'update' : 'add';
+
+            $.post('admin/species', formData + '&action=' + action, function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#speciesModal').modal('hide');
+                    loadSpeciesManagement();
+                } else {
+                    alert('操作失败: ' + response.message);
+                }
+            }).fail(function() {
+                alert('网络错误，请稍后重试');
+            });
+        }
+
+        // User Management Functions
+        function loadUserManagement() {
+            $.get('api/users', function(response) {
+                if (response.success) {
+                    displayUserTable(response.data);
+                } else {
+                    $('#user-table-container').html('<div class="alert alert-danger">加载用户数据失败</div>');
+                }
+            }).fail(function() {
+                $('#user-table-container').html('<div class="alert alert-danger">网络错误，请稍后重试</div>');
+            });
+        }
+
+        function displayUserTable(userData) {
+            let tableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>用户名</th>
+                                <th>姓名</th>
+                                <th>邮箱</th>
+                                <th>角色</th>
+                                <th>注册时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            userData.forEach(function(user) {
+                const roleClass = user.role === 'admin' ? 'bg-danger' : 'bg-primary';
+                const roleName = user.role === 'admin' ? '管理员' : '普通用户';
+
+                tableHtml += `
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.username}</td>
+                        <td>${user.fullName}</td>
+                        <td>${user.email}</td>
+                        <td><span class="badge ${roleClass}">${roleName}</span></td>
+                        <td>${user.createdAt ? new Date(user.createdAt).toLocaleDateString() : '未知'}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-1" onclick="editUser(${user.id})">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id}, '${user.username}')">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            $('#user-table-container').html(tableHtml);
+        }
+
+        function showAddUserModal() {
+            $('#userModalTitle').text('添加新用户');
+            $('#userForm')[0].reset();
+            $('#userId').val('');
+            $('#passwordHint').text('*');
+            $('#userPassword').prop('required', true);
+            $('#userModal').modal('show');
+        }
+
+        function editUser(id) {
+            $.get('api/users', function(response) {
+                if (response.success) {
+                    const user = response.data.find(u => u.id === id);
+                    if (user) {
+                        $('#userModalTitle').text('编辑用户信息');
+                        $('#userId').val(user.id);
+                        $('#userUsername').val(user.username);
+                        $('#userPassword').val(''); // 不显示密码
+                        $('#userEmail').val(user.email);
+                        $('#userFullName').val(user.fullName);
+                        $('#userRole').val(user.role);
+                        $('#passwordHint').text('(留空保持不变)');
+                        $('#userPassword').prop('required', false);
+                        $('#userModal').modal('show');
+                    }
+                }
+            });
+        }
+
+        function deleteUser(id, username) {
+            if (confirm(`确定要删除用户 "${username}" 吗？此操作不可撤销。`)) {
+                $.post('admin/users', {
+                    action: 'delete',
+                    id: id
+                }, function(response) {
+                    if (response.success) {
+                        alert('删除成功');
+                        loadUserManagement();
+                    } else {
+                        alert('删除失败: ' + response.message);
+                    }
+                }).fail(function() {
+                    alert('网络错误，请稍后重试');
+                });
+            }
+        }
+
+        function saveUser() {
+            const form = $('#userForm');
+            const formData = form.serialize();
+            const isEdit = $('#userId').val() !== '';
+            const action = isEdit ? 'update' : 'add';
+
+            $.post('admin/users', formData + '&action=' + action, function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#userModal').modal('hide');
+                    loadUserManagement();
+                    loadDashboardStats(); // 更新统计数据
+                } else {
+                    alert('操作失败: ' + response.message);
+                }
+            }).fail(function() {
+                alert('网络错误，请稍后重试');
+            });
+        }
+
+        // Volunteer Management Functions
+        function loadVolunteerManagement() {
+            loadActivities();
+            loadRegistrations();
+        }
+
+        function loadActivities() {
+            $.get('api/volunteer', function(response) {
+                if (response.success) {
+                    displayActivityTable(response.data);
+                } else {
+                    $('#activity-table-container').html('<div class="alert alert-danger">加载活动数据失败</div>');
+                }
+            }).fail(function() {
+                $('#activity-table-container').html('<div class="alert alert-danger">网络错误，请稍后重试</div>');
+            });
+        }
+
+        function displayActivityTable(activities) {
+            let tableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>活动标题</th>
+                                <th>日期</th>
+                                <th>地点</th>
+                                <th>报名情况</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            activities.forEach(function(activity) {
+                const statusClass = activity.status === 'open' ? 'bg-success' :
+                                  activity.status === 'closed' ? 'bg-warning' : 'bg-secondary';
+                const statusText = activity.status === 'open' ? '开放报名' :
+                                 activity.status === 'closed' ? '关闭报名' : '已完成';
+
+                tableHtml += `
+                    <tr>
+                        <td>${activity.id}</td>
+                        <td>${activity.title}</td>
+                        <td>${activity.activityDate}</td>
+                        <td>${activity.location}</td>
+                        <td>${activity.currentParticipants}/${activity.maxParticipants}</td>
+                        <td><span class="badge ${statusClass}">${statusText}</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-1" onclick="editActivity(${activity.id})">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteActivity(${activity.id}, '${activity.title}')">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            $('#activity-table-container').html(tableHtml);
+        }
+
+        function showAddActivityModal() {
+            $('#activityModalTitle').text('添加新活动');
+            $('#activityForm')[0].reset();
+            $('#activityId').val('');
+            $('#activityModal').modal('show');
+        }
+
+        function editActivity(id) {
+            $.get('api/volunteer', function(response) {
+                if (response.success) {
+                    const activity = response.data.find(a => a.id === id);
+                    if (activity) {
+                        $('#activityModalTitle').text('编辑活动信息');
+                        $('#activityId').val(activity.id);
+                        $('#activityTitle').val(activity.title);
+                        $('#activityDescription').val(activity.description);
+                        $('#activityDate').val(activity.activityDate);
+                        $('#activityLocation').val(activity.location);
+                        $('#maxParticipants').val(activity.maxParticipants);
+                        $('#activityStatus').val(activity.status);
+                        $('#activityRequirements').val(activity.requirements);
+                        $('#contactInfo').val(activity.contactInfo);
+                        $('#activityModal').modal('show');
+                    }
+                }
+            });
+        }
+
+        function deleteActivity(id, title) {
+            if (confirm(`确定要删除活动 "${title}" 吗？此操作不可撤销。`)) {
+                $.post('admin/volunteer', {
+                    action: 'delete',
+                    id: id
+                }, function(response) {
+                    if (response.success) {
+                        alert('删除成功');
+                        loadActivities();
+                    } else {
+                        alert('删除失败: ' + response.message);
+                    }
+                }).fail(function() {
+                    alert('网络错误，请稍后重试');
+                });
+            }
+        }
+
+        function saveActivity() {
+            const form = $('#activityForm');
+            const formData = form.serialize();
+            const isEdit = $('#activityId').val() !== '';
+            const action = isEdit ? 'update' : 'add';
+
+            $.post('admin/volunteer', formData + '&action=' + action, function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#activityModal').modal('hide');
+                    loadActivities();
+                } else {
+                    alert('操作失败: ' + response.message);
+                }
+            }).fail(function() {
+                alert('网络错误，请稍后重试');
+            });
+        }
+
+        function loadRegistrations() {
+            $.get('api/volunteer-registrations', function(response) {
+                if (response.success) {
+                    displayRegistrationTable(response.data);
+                } else {
+                    $('#registration-table-container').html('<div class="alert alert-danger">加载报名数据失败</div>');
+                }
+            }).fail(function() {
+                $('#registration-table-container').html('<div class="alert alert-danger">网络错误，请稍后重试</div>');
+            });
+        }
+
+        function displayRegistrationTable(registrations) {
+            let tableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>报名ID</th>
+                                <th>活动名称</th>
+                                <th>活动日期</th>
+                                <th>报名用户</th>
+                                <th>用户邮箱</th>
+                                <th>报名时间</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            registrations.forEach(function(registration) {
+                const statusClass = registration.status === 'registered' ? 'bg-success' :
+                                  registration.status === 'cancelled' ? 'bg-danger' : 'bg-info';
+                const statusText = registration.status === 'registered' ? '已报名' :
+                                 registration.status === 'cancelled' ? '已取消' : '已完成';
+
+                tableHtml += `
+                    <tr>
+                        <td>${registration.id}</td>
+                        <td>${registration.activityTitle}</td>
+                        <td>${registration.activityDate}</td>
+                        <td>${registration.userName}</td>
+                        <td>${registration.userEmail}</td>
+                        <td>${new Date(registration.registrationDate).toLocaleDateString()}</td>
+                        <td><span class="badge ${statusClass}">${statusText}</span></td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            $('#registration-table-container').html(tableHtml);
+        }
+
+        // Guide Management Functions
+        function loadGuideManagement() {
+            $.get('api/wildlife-guides', function(response) {
+                if (response.success) {
+                    displayGuideTable(response.data);
+                } else {
+                    $('#guide-table-container').html('<div class="alert alert-danger">加载观察指南数据失败</div>');
+                }
+            }).fail(function() {
+                $('#guide-table-container').html('<div class="alert alert-danger">网络错误，请稍后重试</div>');
+            });
+        }
+
+        function displayGuideTable(guides) {
+            let tableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>分类</th>
+                                <th>图标</th>
+                                <th>显示顺序</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            guides.forEach(function(guide) {
+                const statusClass = guide.isActive ? 'bg-success' : 'bg-secondary';
+                const statusText = guide.isActive ? '启用' : '禁用';
+
+                tableHtml += `
+                    <tr>
+                        <td>${guide.id}</td>
+                        <td>${guide.title}</td>
+                        <td>${guide.category || '未分类'}</td>
+                        <td><i class="${guide.icon || 'fas fa-question'}"></i></td>
+                        <td>${guide.displayOrder}</td>
+                        <td><span class="badge ${statusClass}">${statusText}</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-1" onclick="editGuide(${guide.id})">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteGuide(${guide.id}, '${guide.title}')">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            $('#guide-table-container').html(tableHtml);
+        }
+
+        function showAddGuideModal() {
+            $('#guideModalTitle').text('添加新指南');
+            $('#guideForm')[0].reset();
+            $('#guideId').val('');
+            $('#guideModal').modal('show');
+        }
+
+        function editGuide(id) {
+            $.get('api/wildlife-guides', function(response) {
+                if (response.success) {
+                    const guide = response.data.find(g => g.id === id);
+                    if (guide) {
+                        $('#guideModalTitle').text('编辑观察指南');
+                        $('#guideId').val(guide.id);
+                        $('#guideTitle').val(guide.title);
+                        $('#guideContent').val(guide.content);
+                        $('#guideCategory').val(guide.category);
+                        $('#guideIcon').val(guide.icon);
+                        $('#displayOrder').val(guide.displayOrder);
+                        $('#isActive').val(guide.isActive.toString());
+                        $('#guideModal').modal('show');
+                    }
+                }
+            });
+        }
+
+        function deleteGuide(id, title) {
+            if (confirm(`确定要删除观察指南 "${title}" 吗？此操作不可撤销。`)) {
+                $.post('admin/wildlife-guides', {
+                    action: 'delete',
+                    id: id
+                }, function(response) {
+                    if (response.success) {
+                        alert('删除成功');
+                        loadGuideManagement();
+                    } else {
+                        alert('删除失败: ' + response.message);
+                    }
+                }).fail(function() {
+                    alert('网络错误，请稍后重试');
+                });
+            }
+        }
+
+        function saveGuide() {
+            const form = $('#guideForm');
+            const formData = form.serialize();
+            const isEdit = $('#guideId').val() !== '';
+            const action = isEdit ? 'update' : 'add';
+
+            $.post('admin/wildlife-guides', formData + '&action=' + action, function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#guideModal').modal('hide');
+                    loadGuideManagement();
+                } else {
+                    alert('操作失败: ' + response.message);
+                }
+            }).fail(function() {
+                alert('网络错误，请稍后重试');
+            });
+        }
+
+        // News Management Functions
+        function loadNewsManagement() {
+            $.get('api/conservation-news?type=admin', function(response) {
+                if (response.success) {
+                    displayNewsTable(response.data);
+                } else {
+                    $('#news-table-container').html('<div class="alert alert-danger">加载保护动态数据失败</div>');
+                }
+            }).fail(function() {
+                $('#news-table-container').html('<div class="alert alert-danger">网络错误，请稍后重试</div>');
+            });
+        }
+
+        function displayNewsTable(newsData) {
+            let tableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>分类</th>
+                                <th>作者</th>
+                                <th>发布日期</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            newsData.forEach(function(news) {
+                const statusClass = news.isPublished ? 'bg-success' : 'bg-secondary';
+                const statusText = news.isPublished ? '已发布' : '草稿';
+                const featuredBadge = news.isFeatured ? '<span class="badge bg-warning text-dark ms-1">推荐</span>' : '';
+
+                tableHtml += `
+                    <tr>
+                        <td>${news.id}</td>
+                        <td>${news.title}${featuredBadge}</td>
+                        <td><span class="badge ${news.badgeColor}">${news.category}</span></td>
+                        <td>${news.author || '未知'}</td>
+                        <td>${news.publishDate}</td>
+                        <td><span class="badge ${statusClass}">${statusText}</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-1" onclick="editNews(${news.id})">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteNews(${news.id}, '${news.title}')">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            $('#news-table-container').html(tableHtml);
+        }
+
+        function showAddNewsModal() {
+            $('#newsModalTitle').text('添加新动态');
+            $('#newsForm')[0].reset();
+            $('#newsId').val('');
+            $('#publishDate').val(new Date().toISOString().split('T')[0]);
+            $('#isPublished').prop('checked', true);
+            $('#newsModal').modal('show');
+        }
+
+        function editNews(id) {
+            $.get('api/conservation-news?type=admin', function(response) {
+                if (response.success) {
+                    const news = response.data.find(n => n.id === id);
+                    if (news) {
+                        $('#newsModalTitle').text('编辑保护动态');
+                        $('#newsId').val(news.id);
+                        $('#newsTitle').val(news.title);
+                        $('#newsSummary').val(news.summary);
+                        $('#newsContent').val(news.content);
+                        $('#newsCategory').val(news.category);
+                        $('#badgeColor').val(news.badgeColor);
+                        $('#newsAuthor').val(news.author);
+                        $('#publishDate').val(news.publishDate);
+                        $('#imageUrl').val(news.imageUrl);
+                        $('#isFeatured').prop('checked', news.isFeatured);
+                        $('#isPublished').prop('checked', news.isPublished);
+                        $('#newsModal').modal('show');
+                    }
+                }
+            });
+        }
+
+        function deleteNews(id, title) {
+            if (confirm(`确定要删除保护动态 "${title}" 吗？此操作不可撤销。`)) {
+                $.post('admin/conservation-news', {
+                    action: 'delete',
+                    id: id
+                }, function(response) {
+                    if (response.success) {
+                        alert('删除成功');
+                        loadNewsManagement();
+                    } else {
+                        alert('删除失败: ' + response.message);
+                    }
+                }).fail(function() {
+                    alert('网络错误，请稍后重试');
+                });
+            }
+        }
+
+        function saveNews() {
+            const form = $('#newsForm');
+            const formData = form.serialize();
+            const isEdit = $('#newsId').val() !== '';
+            const action = isEdit ? 'update' : 'add';
+
+            $.post('admin/conservation-news', formData + '&action=' + action, function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#newsModal').modal('hide');
+                    loadNewsManagement();
+                } else {
+                    alert('操作失败: ' + response.message);
+                }
+            }).fail(function() {
+                alert('网络错误，请稍后重试');
+            });
+        }
+    </script>
+</body>
+</html>

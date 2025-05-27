@@ -14,51 +14,49 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Servlet for handling user login
+ * Servlet for handling admin login
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/admin-login")
+public class AdminLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
-
+    
     @Override
     public void init() {
         userDAO = new UserDAO();
     }
-
+    
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+        
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         JSONObject jsonResponse = new JSONObject();
-
+        
         User user = userDAO.validateUser(username, password);
-
-        if (user != null) {
+        
+        if (user != null && "admin".equals(user.getRole())) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("isAdmin", true);
             session.setMaxInactiveInterval(30 * 60); // 30 minutes
-
+            
             jsonResponse.put("success", true);
-            jsonResponse.put("message", "登录成功");
-
-            // 根据用户角色跳转到不同页面
-            if ("admin".equals(user.getRole())) {
-                jsonResponse.put("redirect", "admin-dashboard.html");
-            } else {
-                jsonResponse.put("redirect", "home.html");
-            }
+            jsonResponse.put("message", "管理员登录成功");
+            jsonResponse.put("redirect", "admin-dashboard.html");
+        } else if (user != null && !"admin".equals(user.getRole())) {
+            jsonResponse.put("success", false);
+            jsonResponse.put("message", "您不是管理员，请使用普通用户登录");
         } else {
             jsonResponse.put("success", false);
-            jsonResponse.put("message", "用户名或密码错误");
+            jsonResponse.put("message", "管理员账号或密码错误");
         }
-
+        
         out.print(jsonResponse.toString());
         out.flush();
     }

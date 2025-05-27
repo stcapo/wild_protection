@@ -9,17 +9,19 @@ public class User {
     private String password;
     private String email;
     private String fullName;
+    private String role;
     private String createdAt;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String email, String fullName, String createdAt) {
+    public User(int id, String username, String password, String email, String fullName, String role, String createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.fullName = fullName;
+        this.role = role;
         this.createdAt = createdAt;
     }
 
@@ -63,6 +65,14 @@ public class User {
         this.fullName = fullName;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -78,7 +88,8 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", fullName='" + fullName + '\'' +
+                ", role='" + role + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 '}';
     }
-} 
+}

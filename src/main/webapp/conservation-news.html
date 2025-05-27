@@ -158,17 +158,19 @@
 
     <!-- Main Content -->
     <div class="container news-container">
-        <div class="row mb-4">
+        <!-- Loading indicator -->
+        <div id="loading" class="text-center py-5">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">加载中...</span>
+            </div>
+            <p class="mt-3">正在加载保护动态...</p>
+        </div>
+
+        <!-- Featured News -->
+        <div class="row mb-4" id="featured-news-container" style="display: none;">
             <div class="col-lg-12">
-                <div class="featured-news">
-                    <img src="" alt="青海湖保护区新增鸟类品种" class="featured-news-img">
-                    <div class="featured-news-content">
-                        <span class="badge bg-primary">重要发现</span>
-                        <h1 class="mt-2">青海湖保护区新增鸟类品种</h1>
-                        <p class="mb-1">青海湖国家级自然保护区日前宣布，经过多年监测，保护区记录到的鸟类种类达189种，较建区初期增加了26种。</p>
-                        <p class="news-date"><i class="far fa-calendar-alt me-1"></i> 2024年3月15日</p>
-                        <a href="#" class="btn btn-light mt-2">阅读全文</a>
-                    </div>
+                <div class="featured-news" id="featured-news">
+                    <!-- Featured news will be loaded here -->
                 </div>
             </div>
         </div>
@@ -179,88 +181,29 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h2>最新动态</h2>
                         <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control search-box" placeholder="搜索新闻...">
-                            <button class="btn btn-success search-btn" type="button"><i class="fas fa-search"></i></button>
+                            <input type="text" class="form-control search-box" placeholder="搜索新闻..." id="search-input">
+                            <button class="btn btn-success search-btn" type="button" id="search-btn"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card news-card">
-                                <div class="position-relative">
-                                    <span class="badge bg-success news-badge">保护成果</span>
-                                    <img src="" alt="大熊猫野外种群数量增长" class="news-img">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">大熊猫野外种群数量增长</h5>
-                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月10日</p>
-                                    <p class="card-text">最新监测数据显示，我国野生大熊猫数量已达1800余只，较十年前增长了16.8%。</p>
-                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card news-card">
-                                <div class="position-relative">
-                                    <span class="badge bg-danger news-badge">紧急状况</span>
-                                    <img src="" alt="云南发现非法贩卖野生动物案件" class="news-img">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">云南发现非法贩卖野生动物案件</h5>
-                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月8日</p>
-                                    <p class="card-text">执法部门在云南边境查获一起大规模野生动物走私案，解救多种珍稀保护动物。</p>
-                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- News Container -->
+                    <div id="news-container">
+                        <!-- News will be loaded here -->
                     </div>
 
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <div class="card news-card">
-                                <div class="position-relative">
-                                    <span class="badge bg-info news-badge">研究成果</span>
-                                    <img src="" alt="新研究揭示气候变化对迁徙鸟类影响" class="news-img">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">新研究揭示气候变化对迁徙鸟类影响</h5>
-                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月5日</p>
-                                    <p class="card-text">中国科学院最新研究表明，气候变化正在改变多种候鸟的迁徙路线和时间。</p>
-                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card news-card">
-                                <div class="position-relative">
-                                    <span class="badge bg-warning text-dark news-badge">政策动态</span>
-                                    <img src="" alt="我国将加强湿地保护力度" class="news-img">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">我国将加强湿地保护力度</h5>
-                                    <p class="news-date mb-2"><i class="far fa-calendar-alt me-1"></i> 2024年3月1日</p>
-                                    <p class="card-text">国家林草局发布新政策，未来五年将新建50处湿地保护区，恢复湿地面积200万公顷。</p>
-                                    <a href="#" class="btn btn-sm btn-outline-success">阅读更多</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-center mt-4">
-                        <nav aria-label="新闻分页">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">下一页</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+<!--                    <div class="d-flex justify-content-center mt-4">-->
+<!--                        <nav aria-label="新闻分页">-->
+<!--                            <ul class="pagination">-->
+<!--                                <li class="page-item disabled">-->
+<!--                                </li>-->
+<!--                                <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+<!--                                <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                                <li class="page-item">-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </nav>-->
+<!--                    </div>-->
                 </div>
             </div>
 
@@ -270,14 +213,11 @@
                         <h5 class="card-title mb-0">新闻分类</h5>
                     </div>
                     <div class="card-body">
-                        <ul class="list-group categories-list">
-                            <li class="list-group-item active"><a href="#" class="text-decoration-none text-dark">全部新闻</a></li>
-                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">保护成果</a></li>
-                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">研究发现</a></li>
-                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">政策法规</a></li>
-                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">栖息地保护</a></li>
-                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">物种救助</a></li>
-                            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">国际合作</a></li>
+                        <ul class="list-group categories-list" id="categories-list">
+                            <li class="list-group-item active" data-category="all">
+                                <a href="#" class="text-decoration-none text-dark">全部新闻</a>
+                            </li>
+                            <!-- Categories will be loaded dynamically -->
                         </ul>
                     </div>
                 </div>
@@ -322,7 +262,212 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="js/conservation-news/conservation-news.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        let allNews = [];
+        let currentCategory = 'all';
+
+        $(document).ready(function() {
+            loadConservationNews();
+
+            // Search functionality
+            $('#search-btn').click(function() {
+                performSearch();
+            });
+
+            $('#search-input').keypress(function(e) {
+                if (e.which === 13) {
+                    performSearch();
+                }
+            });
+        });
+
+        function loadConservationNews() {
+            $.get('api/conservation-news', function(response) {
+                $('#loading').hide();
+                if (response.success && response.data) {
+                    allNews = response.data;
+                    displayFeaturedNews();
+                    displayNews();
+                    loadCategories();
+                } else {
+                    showError('加载保护动态失败');
+                }
+            }).fail(function() {
+                $('#loading').hide();
+                showError('网络错误，请稍后重试');
+            });
+        }
+
+        function displayFeaturedNews() {
+            const featuredNews = allNews.find(news => news.isFeatured);
+            if (featuredNews) {
+                const featuredHtml = `
+                    <img src="${featuredNews.imageUrl}" alt="${featuredNews.title}" class="featured-news-img"
+                         onerror="this.src='https://via.placeholder.com/800x400?text=图片加载失败'">
+                    <div class="featured-news-content">
+                        <span class="badge ${featuredNews.badgeColor}">${featuredNews.category}</span>
+                        <h1 class="mt-2">${featuredNews.title}</h1>
+                        <p class="mb-1">${featuredNews.summary}</p>
+                        <p class="news-date"><i class="far fa-calendar-alt me-1"></i> ${formatDate(featuredNews.publishDate)}</p>
+                        <button class="btn btn-light mt-2" onclick="showNewsDetail(${featuredNews.id})">阅读全文</button>
+                    </div>
+                `;
+                $('#featured-news').html(featuredHtml);
+                $('#featured-news-container').show();
+            }
+        }
+
+        function displayNews(newsToShow = null) {
+            const newsData = newsToShow || allNews.filter(news =>
+                currentCategory === 'all' || news.category === currentCategory
+            );
+
+            let newsHtml = '';
+            let rowHtml = '';
+
+            newsData.forEach(function(news, index) {
+                if (!news.isFeatured) {
+                    const newsCard = `
+                        <div class="col-md-6">
+                            <div class="card news-card">
+                                <div class="position-relative">
+                                    <span class="badge ${news.badgeColor} news-badge">${news.category}</span>
+                                    <img src="${news.imageUrl}" alt="${news.title}" class="news-img"
+                                         onerror="this.src='https://via.placeholder.com/400x200?text=图片加载失败'">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">${news.title}</h5>
+                                    <p class="news-date mb-2">
+                                        <i class="far fa-calendar-alt me-1"></i> ${formatDate(news.publishDate)}
+                                        <span class="ms-2"><i class="far fa-user me-1"></i> ${news.author}</span>
+                                    </p>
+                                    <p class="card-text">${news.summary}</p>
+                                    <button class="btn btn-sm btn-outline-success" onclick="showNewsDetail(${news.id})">阅读更多</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    rowHtml += newsCard;
+
+                    // Every 2 cards, create a new row
+                    if ((index + 1) % 2 === 0 || index === newsData.length - 1) {
+                        newsHtml += `<div class="row mt-4">${rowHtml}</div>`;
+                        rowHtml = '';
+                    }
+                }
+            });
+
+            $('#news-container').html(newsHtml);
+        }
+
+        function loadCategories() {
+            const categories = [...new Set(allNews.map(news => news.category))];
+            let categoriesHtml = `
+                <li class="list-group-item active" data-category="all">
+                    <a href="#" class="text-decoration-none text-dark">全部新闻</a>
+                </li>
+            `;
+
+            categories.forEach(function(category) {
+                categoriesHtml += `
+                    <li class="list-group-item" data-category="${category}">
+                        <a href="#" class="text-decoration-none text-dark">${category}</a>
+                    </li>
+                `;
+            });
+
+            $('#categories-list').html(categoriesHtml);
+
+            // Bind category click events
+            $('#categories-list .list-group-item').click(function(e) {
+                e.preventDefault();
+                $('#categories-list .list-group-item').removeClass('active');
+                $(this).addClass('active');
+
+                currentCategory = $(this).data('category');
+                displayNews();
+            });
+        }
+
+        function performSearch() {
+            const searchTerm = $('#search-input').val().toLowerCase().trim();
+            if (searchTerm === '') {
+                displayNews();
+                return;
+            }
+
+            const filteredNews = allNews.filter(news =>
+                news.title.toLowerCase().includes(searchTerm) ||
+                news.content.toLowerCase().includes(searchTerm) ||
+                news.summary.toLowerCase().includes(searchTerm)
+            );
+
+            displayNews(filteredNews);
+        }
+
+        function showNewsDetail(newsId) {
+            const news = allNews.find(n => n.id === newsId);
+            if (news) {
+                // Create a modal to show news detail
+                const modalHtml = `
+                    <div class="modal fade" id="newsDetailModal" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">${news.title}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <span class="badge ${news.badgeColor} me-2">${news.category}</span>
+                                        <small class="text-muted">
+                                            <i class="far fa-calendar-alt me-1"></i> ${formatDate(news.publishDate)}
+                                            <span class="ms-3"><i class="far fa-user me-1"></i> ${news.author}</span>
+                                        </small>
+                                    </div>
+                                    <img src="${news.imageUrl}" alt="${news.title}" class="img-fluid mb-3 rounded"
+                                         onerror="this.style.display='none'">
+                                    <div class="news-content">
+                                        ${news.content.replace(/\n/g, '<br>')}
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Remove existing modal if any
+                $('#newsDetailModal').remove();
+                $('body').append(modalHtml);
+                $('#newsDetailModal').modal('show');
+            }
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function showError(message) {
+            const errorHtml = `
+                <div class="alert alert-danger text-center" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    ${message}
+                </div>
+            `;
+            $('#news-container').html(errorHtml);
+        }
+    </script>
 </body>
 </html>
